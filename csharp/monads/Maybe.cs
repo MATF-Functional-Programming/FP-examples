@@ -1,4 +1,4 @@
-public class Maybe<T> : Monad<T> where T : class
+public sealed class Maybe<T> : Monad<T>
 {
     private readonly T value;
 
