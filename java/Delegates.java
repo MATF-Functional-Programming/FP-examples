@@ -6,7 +6,7 @@ public class Delegates {
 
         // Function<T, R>    --->    R f(T)  aka  T -> R
         Function<String, Integer> function = s -> s.length();
-
+        
         // Predicate<T>      --->    bool f(T)  aka  T -> Bool
         // Special types: IntPredicate, LongPredicate ...
         Predicate<String> predicate = s -> s.isEmpty();
