@@ -139,11 +139,34 @@ class User : IEquatable<User>
 }
 // endregion
 
+
 // More examples
 record Member(string Name, MemberDetails Details);
 record MemberDetails(int MonthsSubscribed, bool Blocked);
 
-// Can be used to implement "smart-enums" or sum-types
+// Records are reference types (like classes)
+// For value-type records, use record structs:
+public readonly record struct Point(double X, double Y, double Z);
+
+// Records are meant to be immutable, with support for non-destructive copies
+var member = new Member(Name: "Foo", new MemberDetails(MonthsSubscribed: 12, Blocked: false));
+var shallowCopy = member with { };
+var modifiedMember = member with { Name = "Bar" };
+
+// Records can have mutable properties:
+public record Person
+{
+    public required string FirstName { get; set; }
+    public required string LastName { get; set; }
+};
+
+// Changing accessibility of a particular parameter:
+public record Person(string FirstName, string LastName, string Id)
+{
+    internal string Id { get; init; } = Id;     // Same name as ^, hides Id
+}
+
+// Records can be used to implement "smart-enums" or sum-types
 record PaymentType {
     public record CreditCard(CardNumber CardNumber, SecurityCode CVV, Expiration ExpirationDate, NameOnCard Name) : PaymentType();
     public record ACH(AccountNumber AccountNumber, RoutingNumber RoutingNumber) : PaymentType();

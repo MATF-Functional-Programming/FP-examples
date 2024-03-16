@@ -1,9 +1,7 @@
 import java.util.Objects;
 
-public record Pair<A, B>(A a, B b) {}
-
 // Java 14+
-public record Person(int id, String name);
+public record Person(int id, String name)
 
 // Equivallent to
 public class Person {
@@ -44,3 +42,18 @@ public class Person {
                 '}';
     }
 }
+
+// Template records are also supported:
+public record Pair<A, B>(A a, B b) {}
+
+// You can add members to a record class
+public record Person(String name, String address) {
+    
+    public static String UNKNOWN_ADDRESS = "Unknown";
+
+    public static Person unnamed(String address) {
+        return new Person(UNKNOWN_ADDRESS, address);
+    }
+}
+
+
