@@ -6,6 +6,6 @@ public class Monad<T>
     }
 
     // >>=
-    public abstract Monad<TO> Bind<TO>(Func<T, Monad<TO>> func);
+    public abstract Monad<R> Bind<R>(Func<T, Monad<R>> func);
 }
 

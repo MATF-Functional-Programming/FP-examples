@@ -25,9 +25,9 @@ print(m1.contains_value) # True
 m2 = m1.bind(np.sqrt)
 print(m2.value) # 10.0
 
-m3 = m2.bind(lambda x : x / 0)
+m3 = m2.bind(lambda x : x / 0)  # runtime warning, not an exception
 print(m3.contains_value) # True
-print(m3.value)
+print(m3.value) # inf
 
 def exc(x):
     raise Exception('Failed')

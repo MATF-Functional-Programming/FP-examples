@@ -14,10 +14,11 @@ public sealed class Maybe<T> : Monad<T>
     {
     }
 
-    public Maybe<TO> Bind<TO>(Func<T, Maybe<TO>> func) where TO : class
+    public Maybe<R> Bind<R>(Func<T, Maybe<R>> f) where R : class
     {
-        return value is not null ? func(value) : Maybe<TO>.None();
+        return value is null ? Maybe<R>.None() : f(value);
     }
 
-    public static Maybe<T> None() => new Maybe<T>();
+    public static Maybe<T> Nothing => new Maybe<T>();
+    public static Maybe<T> Just(T value) => new Maybe<T>(someValue);
 }

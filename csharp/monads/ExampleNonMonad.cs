@@ -1,14 +1,15 @@
 public interface ITraditionalRepository
 {
-    Customer GetCustomer(int id);
-    Address GetAddress(int id);
-    Order GetOrder(int id);
+    Customer? GetCustomer(int id);
+    Address? GetAddress(int id);
+    Order? GetOrder(int id);
 }
 
 
-Shipper shipperOfLastOrderOnCurrentAddress = null;
+Shipper? shipperOfLastOrderOnCurrentAddress = null;
 var customer = repo.GetCustomer(customerId);
 if (customer?.Address is not null)
+   // o?.x evaluates to o.x if o is not null, else null
 {
     var address = repo.GetAddress(customer.Address.Id);
     if (address?.LastOrder is not null)

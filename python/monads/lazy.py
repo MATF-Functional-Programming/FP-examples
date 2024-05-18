@@ -1,7 +1,4 @@
 from collections.abc import Callable
-from typing import Dict
-
-import traceback
 
 class LazyMonad:
 
@@ -18,9 +15,6 @@ class LazyMonad:
             return f(self.compute(), *args, **kwargs)
         return LazyMonad(f_compute)
 
-
-
-import numpy as np
 
 def dummy_func1(e):
     print(f'dummy_1 : {e}')
