@@ -2,7 +2,7 @@ public sealed class Maybe<T> : Monad<T>
 {
     private readonly T value;
 
-    public Maybe(T someValue!!) : base(someValue)
+    private Maybe(T someValue!!) : base(someValue)
     {
         // `someValue!!` adds an implicit check:
         // if (someValue == null)
@@ -20,5 +20,9 @@ public sealed class Maybe<T> : Monad<T>
     }
 
     public static Maybe<T> Nothing => new Maybe<T>();
-    public static Maybe<T> Just(T value) => new Maybe<T>(someValue);
+    public static Maybe<T> Just(T value) => new Maybe<T>(value);
+    
+
+    // Maybe<int> m = Maybe.Just(3);
+    // m.Bind(foo).Bind(bar);
 }

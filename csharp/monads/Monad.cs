@@ -1,4 +1,4 @@
-public class Monad<T>
+public abstract class Monad<T>
 {
     // return
     public Monad(T instance)

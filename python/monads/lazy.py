@@ -10,7 +10,7 @@ class LazyMonad:
                 return value
             self.compute = return_val
 
-    def bind(self, f: Callable, *args, **kwargs) -> 'FailureMonad':
+    def bind(self, f: Callable, *args, **kwargs) -> 'LazyMonad':
         def f_compute():
             return f(self.compute(), *args, **kwargs)
         return LazyMonad(f_compute)
